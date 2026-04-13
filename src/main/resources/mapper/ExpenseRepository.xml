@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="repository.ExpenseRepository">
+    <insert id="recordTransaction" parameterType="entity.ExpenseEntity">
+        INSERT INTO EXPENSE
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            transaction_date,
+            transaction_code,
+            amount,
+            installment_frequency,
+            description,
+            remarks
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            #{transactionDate, jdbcType=DATE},
+            #{transactionCode, jdbcType=SMALLINT},
+            #{amount, jdbcType=INTEGER},
+            #{installmentFrequency, jdbcType=INTEGER},
+            #{description, jdbcType=VARCHAR},
+            #{remarks, jdbcType=VARCHAR}
+        </trim>
+    </insert>
+</mapper>
